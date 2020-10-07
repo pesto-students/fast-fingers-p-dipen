@@ -31,9 +31,9 @@ const reducer = (state, action) => {
 
 const useGlobalState = () => {
   const [globalState, globalDispatch] = useReducer(reducer, {
-    isLoggedIn: true,
-    gamerName: 'dipen',
-    level: 1,
+    isLoggedIn: false,
+    gamerName: '',
+    level: null,
   });
   return { globalState, globalDispatch };
 };
