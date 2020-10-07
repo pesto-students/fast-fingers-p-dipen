@@ -13,7 +13,7 @@ const Div = styled.div`
   font-family: ${({ fontFamily }) =>
     ` var(--ff-${fontFamily})` || 'var(--ff-tertiary)'};
   text-shadow: 0 0 16px rgba(0, 0, 0, 0.16);
-  font-size: ${({ fontSize }) => fontSize || '2.75rem'} !important;
+  font-size: ${({ fontSize }) => fontSize || '2.75rem'};
   font-weight: 500;
   font-stretch: normal;
   font-style: normal;
@@ -26,6 +26,7 @@ const Div = styled.div`
 `;
 
 const BigText = styled.h2`
+  font-size: ${({ fontSize }) => fontSize || '2.75rem'};
   @media (max-width: 500px) {
     font-size: ${({ fontSize }) => fontSize || '3rem'} !important;
   }
@@ -64,7 +65,11 @@ const LabelWithText = ({ label, icon, ...props }) => {
   return (
     <Div {...props}>
       {icon && <ImageIcon src={IconWithImage(icon)} alt={icon} />}
-      {label && <BigText url={IconWithImage(icon)}>{label}</BigText>}
+      {label && (
+        <BigText {...props} url={IconWithImage(icon)}>
+          {label}
+        </BigText>
+      )}
     </Div>
   );
 };

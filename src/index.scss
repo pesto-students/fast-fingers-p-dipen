@@ -47,7 +47,7 @@ html {
 }
 @media (max-width: 1024px) {
   html {
-    font-size: 13px;
+    font-size: 11px;
   }
 }
 @media (max-width: 400px) {
@@ -76,7 +76,9 @@ body {
   background-size: cover;
   min-height: 100vh;
 }
-
+#root {
+  min-height: 100vh;
+}
 #root::before {
   content: '';
   position: fixed;
@@ -94,6 +96,9 @@ body {
   opacity: 0.075;
   min-height: 100vh;
 }
-::-webkit-validation-bubble-message {
-  display: none;
+.App-container {
+  min-height: 100vh;
+  display: flex;
+  flex-flow: column;
+  height: 100%;
 }

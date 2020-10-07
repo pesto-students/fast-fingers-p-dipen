@@ -6,8 +6,8 @@ const Div = styled.div`
   &:after {
     position: absolute;
     content: '';
-    top: 64px;
-    right: 36px;
+    top: 50%;
+    right: 5%;
     width: 0;
     height: 0;
     border: 13px solid transparent;

@@ -1,20 +1,36 @@
 import styled from 'styled-components';
-import { Row } from 'react-flexbox-grid';
+import { Grid, Row } from 'react-flexbox-grid';
 import Logo from '../../components/Logo';
 import Text from '../../components/Text';
+export const GridStyle = styled(Grid)`
+  flex: 1 1 auto;
+  display: flex;
+  flex-flow: column;
+  max-width: 60%;
 
+  width: 100%;
+  margin: 0 auto;
+  @media (max-width: 768px) {
+    max-width: 100%;
+  }
+`;
 export const FormStyled = styled.form`
-  margin-top: 5.6%;
+  display: flex;
+  flex-flow: column;
+  height: 100%;
+  flex: 0.6 1 auto;
+  padding-top: 5.6%;
   select {
     margin-top: 2.3%;
   }
 `;
-export const HomeRow = styled(Row)`
-  max-width: 40rem;
-  width: 100%;
-  margin: 0 auto;
+export const InputSelect = styled.div`
+  flex: 1 1 auto;
 `;
-
+export const HomeRow = styled(Row)``;
+export const FormRow = styled(Row)`
+  flex: 1 1 auto;
+`;
 export const KeyBoardIconImg = styled.img`
   margin-top: 11.5%;
   width: 234.2px;
@@ -40,7 +56,6 @@ export const TextStyled = styled(Text)`
   }
 `;
 export const StartGameButton = styled.button`
-  margin-top: 18%;
   -moz-appearance: none; /* Firefox */
   -webkit-appearance: none; /* Safari and Chrome */
   appearance: none;

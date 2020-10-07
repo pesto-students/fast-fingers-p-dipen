@@ -18,7 +18,7 @@ const Header = () => {
               fontFamily={'primary'}
               label={gamerName}
               icon="person"
-              fontSize={'44px'}
+              fontSize={'2.75rem'}
             />
           </Col>
           <Col>
@@ -32,6 +32,7 @@ const Header = () => {
               fontFamily={'primary'}
               label={`LEVEL : ` + returnLevelName(level)}
               icon="gamepad"
+              fontSize={'2.75rem'}
             />
           </Col>
         </Row>

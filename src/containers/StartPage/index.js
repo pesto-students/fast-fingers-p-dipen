@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import Context from '../../store/context';
-import { Row, Col } from 'react-flexbox-grid';
-import { GridStyle } from './StartPageStyle';
+import { Col } from 'react-flexbox-grid';
+import { GridStyle, CenteralRow, FooterRow, Button } from './StartPageStyle';
 import Input from '../../components/Input';
 import HighLighter from '../../components/HighLighter';
 import TimerCounters from '../../components/TimerCounters';
 import { getWordFromDictionary } from '../../utils/helper';
+import LabelWithIcon from '../../components/LabelWithIcon';
 
 class StartPage extends Component {
   constructor(props) {
@@ -57,7 +58,9 @@ class StartPage extends Component {
         document.getElementById('circle').removeAttribute('style');
         this.context.globalDispatch({
           type: 'SETLEVEL',
-          data: this.context.globalState.level + 0.01,
+          data: parseFloat(
+            parseFloat(this.context.globalState.level) + 0.01
+          ).toFixed(2),
         });
       }
     });
@@ -79,11 +82,17 @@ class StartPage extends Component {
   componentWillUnmount() {
     clearInterval(this.timer);
   }
+  goToHomePage = () => {
+    this.context.globalDispatch({
+      type: 'LOGOUT',
+    });
+    this.props.history.push('/');
+  };
   render() {
     const { inputText, timerValue, keyWord } = this.state;
     return (
-      <GridStyle>
-        <Row center="xs">
+      <GridStyle fluid>
+        <CenteralRow center="xs">
           <Col>
             <TimerCounters
               remainingTime={
@@ -102,7 +111,26 @@ class StartPage extends Component {
               align="center"
             />
           </Col>
-        </Row>
+        </CenteralRow>
+        <FooterRow>
+          <Button>
+            <LabelWithIcon
+              content={'left'}
+              fontFamily={'primary'}
+              label={'stop game'}
+              icon="stop"
+              fontSize={'2.75rem'}
+            />
+          </Button>
+          <Button onClick={() => this.goToHomePage()}>
+            <LabelWithIcon
+              content={'left'}
+              fontFamily={'primary'}
+              icon="home"
+              fontSize={'2.75rem'}
+            />
+          </Button>
+        </FooterRow>
       </GridStyle>
     );
   }

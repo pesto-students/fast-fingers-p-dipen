@@ -5,8 +5,12 @@ export const GridStyle = styled(Grid)`
   padding-right: 3%;
   padding-bottom: auto;
   padding-left: 3%;
+  flex: 0 1 auto;
 `;
 
 export const HeaderRow = styled(Row)`
   justify-content: space-between;
+  @media (max-width: 500px) {
+    flex-direction: column-reverse;
+  }
 `;

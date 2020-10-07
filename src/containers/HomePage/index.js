@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
 import KeyboardIcon from '../../assets/icons/Icon awesome-keyboard.svg';
-import { Grid, Col } from 'react-flexbox-grid';
+import { Col } from 'react-flexbox-grid';
 import Input from '../../components/Input';
 import Select from '../../components/Select';
 import LabelWithIcon from '../../components/LabelWithIcon';
@@ -12,6 +12,9 @@ import {
   LogoStyled,
   FormStyled,
   StartGameButton,
+  GridStyle,
+  FormRow,
+  InputSelect,
 } from './HomePageStyle';
 
 const HomePage = (props) => {
@@ -25,22 +28,24 @@ const HomePage = (props) => {
   };
 
   return (
-    <div>
-      <Grid fluid>
-        <HomeRow center="xs">
-          <Col xs={12}>
-            <KeyBoardIconImg src={KeyboardIcon} alt="Keyboard Icon" />
-          </Col>
-          <Col xs={12}>
-            <LogoStyled />
-          </Col>
-          <Col xs={12}>
-            <TextStyled align="center" fontSize="1.625rem">
-              the ultimate typing game
-            </TextStyled>
-          </Col>
-          <Col xs={12}>
-            <FormStyled onSubmit={onSubmitForm}>
+    <GridStyle fluid>
+      <HomeRow center="xs">
+        <Col xs={12}>
+          <KeyBoardIconImg src={KeyboardIcon} alt="Keyboard Icon" />
+        </Col>
+        <Col xs={12}>
+          <LogoStyled />
+        </Col>
+        <Col xs={12}>
+          <TextStyled align="center" fontSize="1.625rem">
+            the ultimate typing game
+          </TextStyled>
+        </Col>
+      </HomeRow>
+      <FormRow center="xs">
+        <Col xs={12}>
+          <FormStyled onSubmit={onSubmitForm}>
+            <InputSelect>
               <Input
                 placeholder="type your name"
                 required="required"
@@ -58,14 +63,14 @@ const HomePage = (props) => {
                 value={level}
                 onChange={(e) => setLevel(e.target.value)}
               />
-              <StartGameButton type="submit">
-                <LabelWithIcon label="Start game" icon="play" />
-              </StartGameButton>
-            </FormStyled>
-          </Col>
-        </HomeRow>
-      </Grid>
-    </div>
+            </InputSelect>
+            <StartGameButton type="submit">
+              <LabelWithIcon label="Start game" icon="play" />
+            </StartGameButton>
+          </FormStyled>
+        </Col>
+      </FormRow>
+    </GridStyle>
   );
 };
 

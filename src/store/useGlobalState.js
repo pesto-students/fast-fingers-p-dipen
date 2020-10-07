@@ -17,7 +17,7 @@ const reducer = (state, action) => {
         ...{
           isLoggedIn: false,
           gamerName: '',
-          level: '',
+          level: null,
         },
       };
     case 'SETGAMERNAME':

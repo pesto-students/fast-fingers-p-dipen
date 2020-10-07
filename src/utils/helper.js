@@ -1,8 +1,8 @@
 import dictionary from '../assets/data/dictionary.json';
 export const returnLevelName = (level) => {
-  if (level < 1.5) {
+  if (parseFloat(level) < 1.5) {
     return 'easy';
-  } else if (level >= 1.5 && level < 2) {
+  } else if (parseFloat(level) >= 1.5 && parseFloat(level) < 2) {
     return 'medium';
   } else {
     return 'hard';
