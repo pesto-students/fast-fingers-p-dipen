@@ -6,7 +6,7 @@ import Stop from '../../assets/icons/Icon metro-cross.svg';
 import Person from '../../assets/icons/Icon material-person.svg';
 import Home from '../../assets/icons/Icon awesome-home.svg';
 import Reload from '../../assets/icons/Icon open-reload.svg';
-import mediaSize from '../../constants/MediaSize';
+
 const Div = styled.div`
   display: flex;
   align-items: center;

@@ -10,7 +10,7 @@ import { getWordFromDictionary } from '../../utils/helper';
 class StartPage extends Component {
   constructor(props) {
     super(props);
-    this.state = { inputText: '', timerValue: 0, keyWord: '' };
+    this.state = { inputText: '', timerValue: 0, keyWord: '', gameScore: 0 };
   }
   componentDidMount() {
     this.isLoggedOrNot();
@@ -22,7 +22,7 @@ class StartPage extends Component {
       this.props.history.push('/');
     } else {
       const { keyWord, timerValue } = getWordFromDictionary(level);
-      this.setState({ keyWord, timerValue }, () => {
+      this.setState({ keyWord, timerValue, inputText: '' }, () => {
         setTimeout(() => {
           document
             .getElementById('circle')
@@ -33,12 +33,34 @@ class StartPage extends Component {
                 's linear forwards'
             );
           this.startTimer();
-        }, 2000);
+        }, 500);
       });
     }
   };
   setInputText = (value) => {
-    this.setState({ inputText: value });
+    this.setState({ inputText: value }, () => {
+      const { keyWord, inputText } = this.state;
+      let matchLength = 0;
+      for (let i = 0; i < keyWord.length; i++) {
+        if (
+          inputText[i] &&
+          keyWord[i].toLowerCase() === inputText[i].toLowerCase()
+        ) {
+          matchLength++;
+        } else {
+          break;
+        }
+      }
+      if (matchLength === keyWord.length) {
+        this.isLoggedOrNot();
+        clearInterval(this.timer);
+        document.getElementById('circle').removeAttribute('style');
+        this.context.globalDispatch({
+          type: 'SETLEVEL',
+          data: this.context.globalState.level + 0.01,
+        });
+      }
+    });
   };
   decrementRemainingTime = () => {
     if (this.state.timerValue > 0) {

@@ -4,20 +4,26 @@ const reducer = (state, action) => {
   switch (action.type) {
     case 'LOGIN':
       return {
-        isLoggedIn: true,
-        gamerName: action.data.gamerName,
-        level: action.data.level,
+        ...state,
+        ...{
+          isLoggedIn: true,
+          gamerName: action.data.gamerName,
+          level: action.data.level,
+        },
       };
     case 'LOGOUT':
       return {
-        isLoggedIn: false,
-        gamerName: '',
-        level: '',
+        ...state,
+        ...{
+          isLoggedIn: false,
+          gamerName: '',
+          level: '',
+        },
       };
     case 'SETGAMERNAME':
-      return { gamerName: action.data };
+      return { ...state, ...{ gamerName: action.data } };
     case 'SETLEVEL':
-      return { level: action.data };
+      return { ...state, ...{ level: action.data } };
     default:
       return state;
   }
