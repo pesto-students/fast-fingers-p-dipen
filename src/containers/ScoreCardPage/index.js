@@ -4,11 +4,11 @@ import {
   CenteralRow,
   FooterRow,
   Button,
+  CentralCol,
 } from './ScoreCardPageStyle';
-import { Col } from 'react-flexbox-grid';
 import Context from '../../store/context';
 import LabelWithIcon from '../../components/LabelWithIcon';
-
+import { fmtMSS } from '../../utils/helper';
 class ScoreCardPage extends Component {
   componentDidMount() {
     const context = this.context;
@@ -24,16 +24,45 @@ class ScoreCardPage extends Component {
     this.props.history.push('/');
   };
   render() {
-    console.log(this.props);
+    const { gameScore, highestScore, game } = this.props.location.state;
     return (
       <GridStyle fluid>
         <CenteralRow center="xs">
-          <Col>
-            SCORE
-            <button onClick={() => this.props.history.push('/gamer')}>
-              play gain
-            </button>
-          </Col>
+          <CentralCol center="xs">
+            <LabelWithIcon
+              content={'center'}
+              color={'var(--clr-white)'}
+              fontFamily={'tertiary'}
+              label={`score : game ${game}`}
+              fontSize={'4rem'}
+            />
+            <LabelWithIcon
+              content={'center'}
+              color={'var(--clr-white)'}
+              fontFamily={'tertiary'}
+              label={fmtMSS(gameScore)}
+              fontSize={'5rem'}
+            />
+            {highestScore && (
+              <LabelWithIcon
+                content={'center'}
+                color={'var(--clr-white)'}
+                fontFamily={'secondary'}
+                label={`New High Score`}
+                fontSize={'2rem'}
+              />
+            )}
+            <Button
+              onClick={() => this.props.history.push('/gamer')}
+              content="center"
+            >
+              <LabelWithIcon
+                label="play again"
+                icon="reload"
+                content={'center'}
+              />
+            </Button>
+          </CentralCol>
         </CenteralRow>
         <FooterRow>
           <Button onClick={() => this.goToHomePage()}>

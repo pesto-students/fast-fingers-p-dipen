@@ -26,7 +26,6 @@ export const FooterRow = styled(Row)`
 `;
 
 export const Button = styled.button`
-  display: flex;
   -moz-appearance: none;
   -webkit-appearance: none;
   appearance: none;
@@ -49,6 +48,7 @@ export const ScoreBoardCol = styled(Col)`
   border-radius: 15px;
   border: solid 3px var(--light-red);
   overflow: auto;
+  max-height: 69vh;
   @media (max-width: 500px) {
     width: 100%;
     flex: 1 1 auto;

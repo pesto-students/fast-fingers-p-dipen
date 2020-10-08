@@ -22,11 +22,12 @@ const Div = styled.div`
   letter-spacing: normal;
   text-align: left;
   text-transform: uppercase;
-  color: var(--light-red);
+  color: ${({ color }) => color || 'var(--light-red)'};
   justify-content: ${({ content }) => content || 'center'};
 `;
 
 const BigText = styled.h2`
+  text-align: center;
   font-size: ${({ fontSize }) => fontSize || '2.75rem'};
   @media (max-width: 500px) {
     font-size: ${({ fontSize }) => fontSize || '3rem'} !important;

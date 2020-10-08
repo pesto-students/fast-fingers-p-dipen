@@ -28,6 +28,8 @@ const SelectStyled = styled.select`
   box-shadow: 0 3px 16px 0 rgba(0, 0, 0, 0.8);
   border: solid 1px #ffffff;
   background: transparent;
+  background-image: none;
+  outline: 0;
   &:focus {
     outline: none;
   }
@@ -46,7 +48,6 @@ const SelectStyled = styled.select`
     color: black;
   }
 `;
-
 const Select = ({ onChange, options, value, defaultText, ...props }) => {
   return (
     <Div selectPath={selectArrow}>

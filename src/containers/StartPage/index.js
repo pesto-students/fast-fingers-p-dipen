@@ -11,11 +11,13 @@ import {
   NonShowing,
   HumburgerIcon,
 } from './StartPageStyle';
+import { Grid, Row, Col } from 'react-flexbox-grid';
 import Input from '../../components/Input';
 import Text from '../../components/Text';
 import HighLighter from '../../components/HighLighter';
 import TimerCounters from '../../components/TimerCounters';
 import LabelWithIcon from '../../components/LabelWithIcon';
+import Modal from '../../components/Modal';
 import {
   getWordFromDictionary,
   getMaxFirstIndexValue,
@@ -32,6 +34,8 @@ class StartPage extends Component {
       pauseTimer: false,
       fastFingers: {},
       showHideScoreBoard: false,
+      showHideModal: false,
+      gotoHomeOrNextPage: '',
     };
     this.animationCircle = React.createRef();
     this.scoreBoardCol = React.createRef();
@@ -167,12 +171,23 @@ class StartPage extends Component {
     } else {
       this.props.history.push({
         pathname: '/scoreCard',
-        state: { gameScore, highestScore },
+        state: { gameScore, highestScore, game: fastFingers[gamerName].length },
       });
     }
   };
   showHideScoreBoard = () => {
     this.setState({ showHideScoreBoard: !this.state.showHideScoreBoard });
+  };
+  dissmissable = () => {
+    this.setState({ showHideModal: false, gotoHomeOrNextPage: '' }, () =>
+      this.PauseTimer()
+    );
+  };
+  openModal = (homeOrNextPage) => {
+    this.setState(
+      { showHideModal: true, gotoHomeOrNextPage: homeOrNextPage },
+      () => this.PauseTimer()
+    );
   };
   render() {
     const {
@@ -182,7 +197,10 @@ class StartPage extends Component {
       pauseTimer,
       fastFingers = {},
       showHideScoreBoard,
+      showHideModal,
+      gotoHomeOrNextPage,
     } = this.state;
+    let modalChildren = null;
     const { globalState } = this.context;
     const { gamerName } = globalState;
     const MaxValueIndex = getMaxFirstIndexValue(fastFingers[gamerName] || []);
@@ -218,8 +236,57 @@ class StartPage extends Component {
         No record
       </Text>
     );
+    if (showHideModal) {
+      modalChildren = (
+        <Grid>
+          <Row center="xs">
+            <Col xs={12}>
+              <Text fontSize="1.875rem">
+                Are you sure want to leave the game ?
+              </Text>
+            </Col>
+          </Row>
+          <br />
+          <Row between="xs">
+            <Col xs={2}>
+              <Button onClick={() => this.dissmissable()}>
+                <LabelWithIcon
+                  content={'left'}
+                  fontFamily={'primary'}
+                  label={'Cancel'}
+                  fontSize={'1.55rem'}
+                />
+              </Button>
+            </Col>
+            <Col xs={2} last="xs">
+              <Button
+                onClick={() =>
+                  this.gameOverMoveToNextPage(
+                    gotoHomeOrNextPage === 'home' ? true : false
+                  )
+                }
+              >
+                <LabelWithIcon
+                  content={'right'}
+                  fontFamily={'primary'}
+                  label={'Ok'}
+                  fontSize={'1.55rem'}
+                />
+              </Button>
+            </Col>
+          </Row>
+        </Grid>
+      );
+    }
     return (
       <GridStyle fluid>
+        {showHideModal && (
+          <Modal
+            visible={showHideModal}
+            dismiss={this.dissmissable}
+            children={modalChildren}
+          />
+        )}
         <HumburgerIcon
           icon="menu"
           width="35px"
@@ -271,26 +338,27 @@ class StartPage extends Component {
               align="center"
               disabled={pauseTimer}
             />
-            <button onClick={() => this.PauseTimer()}>play pause</button>
           </TimerCol>
           <NonShowing />
         </CenteralRow>
         <FooterRow>
-          <Button onClick={() => this.gameOverMoveToNextPage()}>
+          <Button onClick={() => this.openModal('next')}>
             <LabelWithIcon
               content={'left'}
               fontFamily={'primary'}
               label={'stop game'}
               icon="stop"
               fontSize={'2.75rem'}
+              width="70px"
             />
           </Button>
-          <Button onClick={() => this.goToHomePage()}>
+          <Button onClick={() => this.openModal('home')}>
             <LabelWithIcon
               content={'left'}
               fontFamily={'primary'}
               icon="home"
               fontSize={'2.75rem'}
+              width="50px"
             />
           </Button>
         </FooterRow>
