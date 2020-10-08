@@ -14,6 +14,7 @@ const Text = styled.span`
     text-transform: uppercase;
   }
   `}
+  ${({ upperCase }) => upperCase && `text-transform: uppercase;`}
   @media ${mediaSize.tablet} {
     font-size: ${({ fontSize }) => fontSize || '1rem'};
   }

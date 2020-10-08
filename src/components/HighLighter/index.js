@@ -4,6 +4,8 @@ import styled from 'styled-components';
 
 const Div = styled.div`
   display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   text-align: center;
   text-shadow: 0 0 16px rgba(0, 0, 0, 0.16);
   font-family: var(--ff-tertiary);

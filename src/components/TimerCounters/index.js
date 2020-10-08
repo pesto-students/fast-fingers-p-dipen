@@ -64,12 +64,12 @@ const ThinCircle = styled.div`
   z-index: -1;
   transform: translate(-50%, -50%);
 `;
-const TimerCounters = ({ remainingTime }) => {
+const TimerCounters = ({ remainingTime, refName }) => {
   return (
     <TimerContainer>
       <CircularTimer>
         <svg>
-          <circle id="circle" r="125" cx="127" cy="127"></circle>
+          <circle ref={refName} r="125" cx="127" cy="127"></circle>
         </svg>
         <ThinCircle />
       </CircularTimer>

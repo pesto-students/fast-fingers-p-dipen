@@ -23,7 +23,10 @@ const HomePage = (props) => {
   const { globalDispatch } = useContext(Context);
   const onSubmitForm = (e) => {
     e.preventDefault();
-    globalDispatch({ type: 'LOGIN', data: { gamerName: name, level: level } });
+    globalDispatch({
+      type: 'LOGIN',
+      data: { gamerName: name.toLowerCase(), level: level },
+    });
     props.history.push('/gamer');
   };
 

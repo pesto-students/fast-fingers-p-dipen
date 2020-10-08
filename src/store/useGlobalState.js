@@ -34,6 +34,7 @@ const useGlobalState = () => {
     isLoggedIn: false,
     gamerName: '',
     level: null,
+    gameTimer: null,
   });
   return { globalState, globalDispatch };
 };

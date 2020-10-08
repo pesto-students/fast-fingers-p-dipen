@@ -39,6 +39,12 @@ const SelectStyled = styled.select`
     border: 2px solid var(--clr-primary);
     outline: none;
   }
+  option {
+    opacity: 0.59;
+    border-radius: 15px;
+    background: var(--clr-white);
+    color: black;
+  }
 `;
 
 const Select = ({ onChange, options, value, defaultText, ...props }) => {

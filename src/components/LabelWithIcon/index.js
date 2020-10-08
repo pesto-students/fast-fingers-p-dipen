@@ -6,6 +6,7 @@ import Stop from '../../assets/icons/Icon metro-cross.svg';
 import Person from '../../assets/icons/Icon material-person.svg';
 import Home from '../../assets/icons/Icon awesome-home.svg';
 import Reload from '../../assets/icons/Icon open-reload.svg';
+import Humburguer from '../../assets/icons/menu.svg';
 
 const Div = styled.div`
   display: flex;
@@ -32,7 +33,7 @@ const BigText = styled.h2`
   }
 `;
 const ImageIcon = styled.img`
-  width: auto;
+  width: ${({ width }) => width || 'auto'};
   margin-right: 10px;
 `;
 const LabelWithText = ({ label, icon, ...props }) => {
@@ -57,6 +58,9 @@ const LabelWithText = ({ label, icon, ...props }) => {
       case 'person':
         url = Person;
         break;
+      case 'menu':
+        url = Humburguer;
+        break;
       default:
         url = Person;
     }
@@ -64,7 +68,7 @@ const LabelWithText = ({ label, icon, ...props }) => {
   };
   return (
     <Div {...props}>
-      {icon && <ImageIcon src={IconWithImage(icon)} alt={icon} />}
+      {icon && <ImageIcon src={IconWithImage(icon)} alt={icon} {...props} />}
       {label && (
         <BigText {...props} url={IconWithImage(icon)}>
           {label}
