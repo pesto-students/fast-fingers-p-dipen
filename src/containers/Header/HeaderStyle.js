@@ -12,5 +12,8 @@ export const HeaderRow = styled(Row)`
   justify-content: space-between;
   @media (max-width: 500px) {
     flex-direction: column-reverse;
+    div {
+      margin-bottom: 5px;
+    }
   }
 `;

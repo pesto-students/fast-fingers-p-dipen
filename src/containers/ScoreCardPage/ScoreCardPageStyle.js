@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { Grid, Row, Col } from 'react-flexbox-grid';
 
 export const GridStyle = styled(Grid)`
-  padding: 3%;
+  padding: 3% 3% 0% 3%;
   flex: 1 1 auto;
   display: flex;
   flex-flow: column;

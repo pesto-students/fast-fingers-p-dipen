@@ -204,27 +204,30 @@ class StartPage extends Component {
     const { gamerName } = globalState;
     const MaxValueIndex = getMaxFirstIndexValue(fastFingers[gamerName] || []);
     const ScoreBoard = fastFingers[gamerName] ? (
-      fastFingers[gamerName].map((value, index) => (
-        <>
-          {MaxValueIndex === index && (
-            <Text
-              fontFamily="var(--ff-secondary)"
-              fontSize="0.7rem"
-              upperCase={true}
-            >
-              PERSONAL BEST
-            </Text>
-          )}
-          <Text
-            fontFamily="var(--ff-secondary)"
-            fontSize="1.875rem"
-            color="white"
-            upperCase={true}
-          >
-            Game {index + 1} : {fmtMSS(value)}
-          </Text>
-        </>
-      ))
+      fastFingers[gamerName].map(
+        (value, index) =>
+          index > fastFingers[gamerName].length - 10 && (
+            <div key={index}>
+              {MaxValueIndex === index && (
+                <Text
+                  fontFamily="var(--ff-secondary)"
+                  fontSize="0.7rem"
+                  upperCase={true}
+                >
+                  PERSONAL BEST
+                </Text>
+              )}
+              <Text
+                fontFamily="var(--ff-secondary)"
+                fontSize="1.875rem"
+                color="white"
+                upperCase={true}
+              >
+                Game {index + 1} : {fmtMSS(value)}
+              </Text>
+            </div>
+          )
+      )
     ) : (
       <Text
         fontFamily="var(--ff-secondary)"
@@ -240,13 +243,13 @@ class StartPage extends Component {
         <Grid>
           <Row center="xs">
             <Col xs={12}>
-              <Text fontSize="1.875rem">
+              <Text fontSize="1.875rem" align="center">
                 Are you sure want to leave the game ?
               </Text>
             </Col>
           </Row>
           <br />
-          <Row between="xs">
+          <Row center="xs">
             <Col xs={2}>
               <Button onClick={() => this.dissmissable()}>
                 <LabelWithIcon
