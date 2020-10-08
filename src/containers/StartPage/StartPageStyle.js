@@ -50,6 +50,7 @@ export const ScoreBoardCol = styled(Col)`
   border-radius: 15px;
   border: solid 3px var(--light-red);
   max-height: 69vh;
+  overflow: auto;
   @media (max-width: 500px) {
     width: 100%;
     flex: 1 1 auto;

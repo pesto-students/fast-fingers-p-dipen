@@ -26,9 +26,9 @@ const CircularTimer = styled.div`
   height: 100%;
   svg {
     height: 100%;
-    transform: rotate(-90deg) translate(21px, -20px);
+    transform: rotate(-90deg) translate(0px, -21px);
     circle {
-      stroke-dasharray: 803px;
+      stroke-dasharray: 772px;
       stroke-dashoffset: 0px;
       stroke-linecap: round;
       stroke-width: 12px;
@@ -42,7 +42,7 @@ const CircularTimer = styled.div`
       stroke-dashoffset: 0px;
     }
     to {
-      stroke-dashoffset: 803px;
+      stroke-dashoffset: 772px;
     }
     99% {
       opacity: 1;
@@ -69,7 +69,7 @@ const TimerCounters = ({ remainingTime, refName }) => {
     <TimerContainer>
       <CircularTimer>
         <svg>
-          <circle ref={refName} r="125" cx="127" cy="127"></circle>
+          <circle ref={refName} r="123" cx="50%" cy="50%"></circle>
         </svg>
         <ThinCircle />
       </CircularTimer>
