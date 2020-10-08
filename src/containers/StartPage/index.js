@@ -147,7 +147,6 @@ class StartPage extends Component {
     clearInterval(this.clockTimer);
     clearInterval(this.gameTimer);
     const { gameScore } = this.state;
-    console.log(localStorage.getItem('fastFingers'));
     let fastFingers = localStorage.getItem('fastFingers');
     if (fastFingers == null) {
       fastFingers = {};
