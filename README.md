@@ -1,3 +1,9 @@
+<h1 align="center">Welcome to My Fast FINGERS GAME 👋</h1>
+
+---
+
+<p align="center"><a href="https://fast-finger-game.netlify.app/" target="_blank">live demo</a></p>
+
 # Fast Fingers
 
 Pesto Tech is proudly launching its own speed typing game named **Fast fingers**. You have been awarded with the project and you need to design and develop this project which should

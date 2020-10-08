@@ -70,7 +70,7 @@ class ScoreCardPage extends Component {
               content={'left'}
               fontFamily={'primary'}
               label={'quit'}
-              fontSize={'2.75rem'}
+              fontSize={'3.75rem'}
             />
           </Button>
           <Button onClick={() => this.goToHomePage()}>

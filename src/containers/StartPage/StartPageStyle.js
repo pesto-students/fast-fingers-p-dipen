@@ -17,6 +17,8 @@ export const CenteralRow = styled(Row)`
   @media (max-width: 500px) {
     flex-direction: row;
     flex-wrap: wrap;
+    flex: 1 1 auto;
+    justify-content: space-around;
   }
 `;
 
@@ -47,7 +49,6 @@ export const ScoreBoardCol = styled(Col)`
   margin-right: 20px;
   border-radius: 15px;
   border: solid 3px var(--light-red);
-  overflow: auto;
   max-height: 69vh;
   @media (max-width: 500px) {
     width: 100%;
@@ -103,8 +104,8 @@ export const NonShowing = styled(Col)`
 
 export const HumburgerIcon = styled(LabelWithIcon)`
   position: absolute;
-  right: 0px;
-  top: 10%;
+  right: 7px;
+  top: 54px;
   @media (min-width: 500px) {
     display: none;
   }

@@ -35,7 +35,10 @@ const BigText = styled.h2`
 `;
 const ImageIcon = styled.img`
   width: ${({ width }) => width || 'auto'};
-  margin-right: 10px;
+  ${({ label }) => label && 'margin-right: 10px'};
+  @media (max-width: 500px) {
+    ${({ label }) => label && 'margin-right: 5px'};
+  }
 `;
 const LabelWithText = ({ label, icon, ...props }) => {
   const IconWithImage = (icon) => {
@@ -69,7 +72,14 @@ const LabelWithText = ({ label, icon, ...props }) => {
   };
   return (
     <Div {...props}>
-      {icon && <ImageIcon src={IconWithImage(icon)} alt={icon} {...props} />}
+      {icon && (
+        <ImageIcon
+          src={IconWithImage(icon)}
+          alt={icon}
+          {...props}
+          label={label}
+        />
+      )}
       {label && (
         <BigText {...props} url={IconWithImage(icon)}>
           {label}

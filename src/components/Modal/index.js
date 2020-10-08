@@ -15,9 +15,10 @@ const ModalBoxSetup = styled.div`
   left: 0;
   right: 0;
   width: 40%;
+  top: 40%;
   overflow: hidden;
   padding: 16px;
-  margin: 50px auto;
+  margin: 0 auto;
   box-sizing: border-box;
   z-index: 1;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.04);
